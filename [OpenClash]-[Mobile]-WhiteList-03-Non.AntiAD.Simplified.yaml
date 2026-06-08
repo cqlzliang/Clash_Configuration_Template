@@ -902,7 +902,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:美国|美國|(?:^|[^A-Z])US(?:$|[^A-Z])|USA|United\\s*States)"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|Netflix|YouTube|Disney|Prime|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -918,7 +918,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:美国|美國|(?:^|[^A-Z])US(?:$|[^A-Z])|USA|United\\s*States)"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|Netflix|YouTube|Disney|Prime|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -934,7 +934,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:日本|Japan|(?:^|[^A-Z])JP(?:$|[^A-Z]))"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|Netflix|YouTube|Disney|Prime|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -950,7 +950,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:英国|英國|United\\s*Kingdom|(?:^|[^A-Z])UK(?:$|[^A-Z])|(?:^|[^A-Z])GB(?:$|[^A-Z]))"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|Netflix|YouTube|Disney|Prime|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -966,7 +966,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:香港|Hong\\s*Kong|(?:^|[^A-Z])HK(?:$|[^A-Z]))"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|Netflix|YouTube|Disney|Prime|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -982,7 +982,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:新加坡|Singapore|(?:^|[^A-Z])SG(?:$|[^A-Z]))"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|Netflix|YouTube|Disney|Prime|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
