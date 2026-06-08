@@ -203,6 +203,12 @@ dns:
     "+.*":
     - https://cloudflare-dns.com/dns-query#♾️.<Final>
     - https://dns.google/dns-query#♾️.<Final>
+    geosite:paypal:
+    - "https://cloudflare-dns.com/dns-query#💰.<Finance>--Paypal"
+    - "https://dns.google/dns-query#💰.<Finance>--Paypal"
+    rule-set:Paypal_Do_Resolve:
+    - "https://cloudflare-dns.com/dns-query#💰.<Finance>--Paypal"
+    - "https://dns.google/dns-query#💰.<Finance>--Paypal"
 proxy-providers:
   SUB-Provider-01:
     type: http
@@ -902,7 +908,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:美国|美國|(?:^|[^A-Z])US(?:$|[^A-Z])|USA|United\\s*States)"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi|限速)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -918,7 +924,7 @@ proxy-groups:
   lazy: false
   include-all: true
   filter: "(?i)(?:美国|美國|(?:^|[^A-Z])US(?:$|[^A-Z])|USA|United\\s*States)"
-  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi)"
+  exclude-filter: "(?i)(?:PrxChain|ProxyChain|Proxy\\s*Chain|代理链|代理鏈|Line-|<|VPS-\\[|DIRECT|REJECT|PASS|官网|WiFi|限速)"
   benchmark-url: https://www.apple.com/library/test/success.html
   benchmark-timeout: 5
   hidden: false
@@ -1080,6 +1086,27 @@ proxy-groups:
   - "\U0001F1EF\U0001F1F5.Line-[JP]"
   - "\U0001F1FA\U0001F1F8.Line-[US]"
   - "\U0001F1EC\U0001F1E7.Line-[UK]"
+- name: "\U0001F4B0.<Finance>--Paypal"
+  icon: ''
+  url: https://www.apple.com/library/test/success.html
+  expected-status: 200
+  max-failed-times: 5
+  type: select
+  interval: 900
+  timeout: 5000
+  lazy: true
+  proxies:
+  - "\U0001F1FA\U0001F1F8.Line-[US]"
+  - "\U0001F1EF\U0001F1F5.Line-[JP]"
+  - "\U0001F1ED\U0001F1F0.Line-[HK]"
+  - "\U0001F1F8\U0001F1EC.Line-[SG]"
+  - "\U0001F1EC\U0001F1E7.Line-[UK]"
+  - "\U0001F310\U0001F1FA\U0001F1F8.Line-[Global]-US.First"
+  - "\U0001F530⚡.Line-[Relay.VPS]-Low.Latency"
+  - DIRECT
+  - REJECT
+  - REJECT-DROP
+  - PASS
 rules:
 - "AND,((OR,((DST-PORT,53),(DST-PORT,853))),(NOT,((GEOIP,CN)))) , \U0001F4E1.<DNS>--GlobalDNS"
 - "rule-set        , GlobalDNS_Domain                           , \U0001F4E1.<DNS>--GlobalDNS"
@@ -1093,10 +1120,17 @@ rules:
 - "rule-set        , Lan_Do_Resolve                             , \U0001F4BB.<Lan>"
 - "geosite         , category-httpdns-cn                        , \U0001F4E1.<Protection>--HttpDNS"
 - "rule-set        , BlockHttpDNS_Do_Resolve                    , \U0001F4E1.<Protection>--HttpDNS"
-- rule-set        , Hijacking_Do_Resolve                       , ⛔️.<Protection>--Hijacking
-- rule-set        , HijackingPlus_Do_Resolve                   , ⛔️.<Protection>--Hijacking
-- rule-set        , PreRepairEasyPrivacy_REJECT_Do_Resolve     , REJECT-DROP
+- rule-set        , Hijacking_Do_Resolve                        , ⛔️.<Protection>--Hijacking
+- rule-set        , HijackingPlus_Do_Resolve                    , ⛔️.<Protection>--Hijacking
+- rule-set        , PreRepairEasyPrivacy_REJECT_Do_Resolve      , REJECT-DROP
+- rule-set        , GeositeCN_Domain                            , DIRECT
+- geoip           , cn                                          , DIRECT
+- geosite         , cn                                         , DIRECT
+- geosite         , cloudflare-cn                              , DIRECT
+- rule-set        , CloudflareCN_Do_Resolve                    , DIRECT
 - "rule-set        , BankHK_Domain                              , \U0001F1ED\U0001F1F0.<Bank>--HK"
+- "geosite         , paypal                                     , \U0001F4B0.<Finance>--Paypal"
+- "rule-set        , Paypal_Do_Resolve                          , \U0001F4B0.<Finance>--Paypal"
 - "geosite         , pornhub                                    , \U0001F4FA.<Video>--Porn"
 - "rule-set        , Pornhub_Domain                             , \U0001F4FA.<Video>--Porn"
 - "geosite         , whatsapp                                   , \U0001F49B.<Social>--Whatsapp"
@@ -1129,7 +1163,6 @@ rules:
 - "domain-suffix   , mil                                        , \U0001F1FA\U0001F1F8.<Country>--US"
 - "domain-suffix   , gov                                        , \U0001F1FA\U0001F1F8.<Country>--US"
 - "domain-suffix   , edu                                        , \U0001F1FA\U0001F1F8.<Country>--US"
-- "geoip           , us                                         , \U0001F1FA\U0001F1F8.<Country>--US"
 - MATCH                                                        , ♾️.<Final>
 - "domain-suffix   , uk                                         , \U0001F1EC\U0001F1E7.<Country>--UK"
 - "domain-suffix   , gb                                         , \U0001F1EC\U0001F1E7.<Country>--UK"
@@ -1342,3 +1375,27 @@ rule-providers:
     proxy: "\U0001F530⚡.Line-[Relay.VPS]-Low.Latency"
     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Apple/Apple_IP.yaml
     path: "./ruleset/Apple_IP.yaml"
+  GeositeCN_Domain:
+    type: http
+    behavior: domain
+    format: yaml
+    interval: 86400
+    proxy: "\U0001F530⚡.Line-[Relay.VPS]-Low.Latency"
+    url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeositeCN/GeositeCN_Domain.yaml
+    path: "./ruleset/GeositeCN_Domain.yaml"
+  CloudflareCN_Do_Resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    proxy: "\U0001F530⚡.Line-[Relay.VPS]-Low.Latency"
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml
+    path: "./ruleset/CloudflareCN.yaml"
+  Paypal_Do_Resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    proxy: "\U0001F530⚡.Line-[Relay.VPS]-Low.Latency"
+    url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/VirtualFinance/Paypal.yaml
+    path: "./ruleset/Paypal.yaml"
